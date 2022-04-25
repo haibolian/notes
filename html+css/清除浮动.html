@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+            #no1 {
+                width: 1200px;
+                height: 200px;
+                background-color: red;
+            }
+            #no2 {
+                float: left;
+                width: 500px;
+                height: 350px;
+                background-color: rgb(206, 160, 160);
+            }
+            #container{
+                /* overflow: hidden; */
+                border: 2px solid yellow ;
+            }
+            #no3 {
+                float: left;
+                width: 500px;
+                height: 200px;
+                background-color: rgb(52, 25, 102);
+            }
+            #no4 {
+                width: 1200px;
+                height: 200px;
+                background-color: green;
+            }
+
+            .clearfix:after{
+                display: block;
+                content:'';
+                clear: both;
+                visibility: hidden;
+                height:0;
+            }
+            .clearfix{
+                zoom: 1;
+            }
+            .clear{ clear:both} 
+            #no5 {
+                width: 500px;
+                background-color: #291fb8;
+            }
+            #no6{
+                float: left;
+                width: 200px;
+                height: 200px;
+                background-color: #cc0acc;
+            }
+            #no7 {
+                /* float: left; */
+                width: 200px;
+                height: 100px;
+                background-color: red;
+            }
+    </style>
+</head>
+<body>
+    <!-- 为什么要清楚浮动：
+    定义一个父盒子不给高度，如果子盒子不定义浮动的话，那么子盒子是可以撑开父盒子的。如果将子盒子添加浮动后，那么父盒子将会出现塌陷
+    父盒子就不会被撑开，接着下面的盒子会顶上来，被浮动的子盒子盖住。这个时候就需要清除浮动。 -->
+
+
+    <div id="no1"></div>  
+    <!-- 方法二：父级元素定义伪类after和zoom
+    元素生成伪类的作用和效果相当于方法一中的原理，zoom解决ie6、7不支持的问题
+    优点：浏览器支持好、不容易出现怪问题，写法是固定的，不理解也可以直接复制使用；
+    缺点：css代码多、不少初学者不理解原理，要两句代码结合使用才能让主流浏览器都支持。 -->
+    <div class="clearfix" id="container">   
+        <div id="no2"></div>
+        <div id="no3"></div>
+        <!-- 方法一：在标签结尾处加空div标签 clear:both
+        优点：简单、代码少、浏览器支持好、不容易出现怪问题
+        缺点：不少初学者不理解原理；如果页面浮动布局多，就要增加很多空div，不利于页面的优化。 -->
+        <!-- <div class="clear"></div>  -->
+    </div>
+    <div  id="no4"></div>
+    <!-- 方法三：给父级元素样式设置overflow:hidden；
+    优点：简单、代码少、浏览器支持好
+    缺点：不能和position配合使用，因为超出的尺寸的会被隐藏。（不建议使用此种方式，可能会影响页面元素布局） -->
+    <div id="no5" >
+        <div id="no6"></div>
+        <div id="no7"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .phoneNumber::before {
+        content:'\260E';
+        font-size: 15px;
+    }
+    a::after{
+        content: '('attr(href)')';
+    }
+    a.baidu::before{
+        content: url('https://www.baidu.com/img/baidu_jgylogo3.gif');
+    }
+    a.baidu::after{
+        content: attr(href);
+    }
+    body{
+        counter-reset: section;
+    }
+    h1{
+        counter-reset: subsection;
+    }
+
+    h1::before{
+        counter-increment: section;
+        content: counter(section);
+    }
+    h2::before{
+        counter-increment: subsection;
+        content: counter(section)'.' counter(subsection);
+    }
+
+    </style>
+</head>
+<body>
+    <p class="phoneNumber">12345645654</p>
+    <a id="dd" href="www.baidu.com">百度</a>
+    <br>
+    <a class="baidu" href="www.baiducom">百度</a>
+    <h1>HTML tutorials</h1>
+    <h2>HTML Tutorial</h2>
+    <h2>XHTML Tutorial</h2>
+    <h2>CSS Tutorial</h2>
+    
+    <h1>Scripting tutorials</h1>
+    <h2>JavaScript</h2>
+    <h2>VBScript</h2>
+    
+    <h1>XML tutorials</h1>
+    <h2>XML</h2>
+    <h2>XSL</h2>
+</body>
+</html>

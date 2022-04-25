@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 相邻盒子上下外边距合并 
+            解决方法：
+            1.给第二个盒子浮动
+            2.给第二个盒子添加绝对定位
+            3.给任意盒子添加display：inline-block
+        */
+        .aa {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            margin-bottom: 20px;
+        }
+        .bb{
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            margin-top: 50px;
+        }
+        
+        /* 嵌套块元素垂直外边距合并的问题  */
+        /* 
+               解决方法：
+                1.给父亲加个边框
+                2.给父亲加个内边距
+                3.为父元素定义overflow:hidden
+                4.父元素display：inline-block
+                5.子元素或者父元素float：left；
+
+。
+            */
+        .cc {
+            width: 1000px;
+            height: 1000px;
+            background-color: black;
+            margin-top: 30px;
+            /* padding: 1px; */
+            /* border: 1px solid; */
+            /* display: inline-block; */
+            /* overflow: hidden; */
+
+        }
+        .dd {
+            float: left;
+            width: 200px;
+            height: 200px;
+            background-color: rgb(26, 150, 221);
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="aa">
+
+    </div>
+    <div class="bb">
+
+    </div>
+    <hr>
+    <div class="cc">
+        <div class="dd"></div>
+    </div>
+</body>
+</html>

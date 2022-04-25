@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .one {
+            /* 使用border-image要定义一个boder */
+            /* transparent   透明的 */
+            border: 15px solid  transparent;
+            /* transform: 可改变元素的位置，位置保留
+                translata；移动位置。横纵坐标
+                rotate：旋转，使旋转，deg单位 1度 ，顺时针，允许负值
+                skew：歪斜，翻转；
+            */
+            
+             transform:translate(50px,100px) rotate(30deg) ;   
+            /* transform: translate(50px,100px); */
+             
+              /* transform: skew(30deg,20deg); */
+            width: 200px;
+            height: 50px;
+            background-color: pink;
+            border-radius: 25px;
+            box-shadow: 10px 10px   50px blue ;
+            border-image: url('images/border.png') 30 30 round;
+        }
+
+        .two{
+            width: 1000px;
+            height: 500px;
+            border: 15px solid red;
+            padding: 20px;
+            background-color: pink;
+            background: url('images/3.jpg');
+            background-repeat: no-repeat;
+            /* background-origin规定了背景图片的位置，padding-box是可以在内边距内， border-box在边框内，congten-box在内容内*/
+            /* background-origin: content-box; */
+            /* background-origin: padding-box; */
+            background-origin: border-box;
+        }
+        .three{
+            width: 1000px;
+            height: 700px;
+            background: url('images/border.png'),url('images/3.jpg');
+        }
+    </style>
+</head>
+<body>
+    <div class="one">asd </div>
+    <div class="two">
+        zheshiasndlasjndkljasdnklasnd
+    </div>
+
+    <div class="three"></div>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        table{
+            /* 表格文本水平对齐方式 */
+            text-align:left;
+            width: 500px;
+            /* 将表格边框折叠成单一边框  collapse塌陷 */
+            border-collapse:collapse;  
+        }
+        table, th, td
+        {
+        /* vertical-align为垂直方向对齐方式；貌似vertical-align不能继承 */
+        vertical-align: bottom;  
+
+        border: 1px solid black;
+        }
+        th{
+            background-color:aqua ;
+            height: 50px;
+        }
+        td {
+            padding:5px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body> 
+    <table >
+        <caption>风云</caption>
+        <thead>
+            <tr>
+                <!-- colspan是横向合并。。rowspan是竖向合并 -->
+                <!-- 表头的地方，用th代替td可使表头加粗 -->
+                <th colspan="2">雄霸</th>  
+                <!-- <th>雄霸</th> -->
+                <th>雄霸</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+                <td rowspan="2">秦霜</td>
+                <td>惊云</td>
+                <td>聂风</td>
+            </tr>
+            <tr>
+                <!-- <td>秦霜</td> -->
+                <td>惊云</td>
+                <td>聂风</td>
+            </tr>
+            <tr>
+                <td>秦霜</td>
+                <td>惊云</td>
+                <td>聂风</td>
+            </tr>
+            <tr>
+                <td>秦霜</td>
+                <td>惊云</td>
+                <td>聂风</td>
+            </tr>
+            <tr>
+                <td>秦霜</td>
+                <td>惊云</td>
+                <td>聂风</td>
+            </tr>
+        </tbody>
+        <tbody>
+            
+        </tbody>
+    </table>
+</body>
+</html>

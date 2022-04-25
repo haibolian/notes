@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .aa {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            /* 
+                relative：相对定位，保留原来的位置，偏移某个距离,
+                偏移的位置是相对自己原来的左上角为基点来移动的
+                相对定位不脱标
+            */
+            position: relative; 
+            left: 50px;
+        }
+        .bb {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .one {
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+
+        }
+        .two {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            /* relative:自恋型，相对于自己原来的位置进行移动 */
+            position: relative;
+            left: 50px;
+        }
+        .three {
+            width: 10px;
+            height: 10px;
+            /* absolute 绝对定位，拼爹型，绝对定位脱标，完全不占位置
+                若父级没有定位，则以浏览器当前屏幕为基准对齐
+                若父级有定位，则绝对定位元素依据最近的已经定位（相对，绝对，固定）的父级（祖先）元素进行定位
+            */
+            position: absolute;
+            left: 40%;
+            top: 10px;
+            background-color: yellow;
+        }
+        .four {
+            width: 100px;
+            height: 20px;
+            background-color: green;
+        }
+        .five {
+            width: 20px;
+            height: 20px;
+            background-color: blue;
+            position: absolute;
+            top: 50px;  
+            left: 50%;
+        }
+        .no1{
+            width: 1000px;
+            height: 500px;
+            background-color: pink;
+            position: relative;
+        }
+        .no2{
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            position: absolute;
+            left: 5px;
+            /* 
+            此段代码可以让该元素水平居中显示
+            margin: auto;
+            left: 0;
+            right: 0; */
+          
+            top:50%;
+            margin-top: -25px;
+        
+        }
+        .no3{
+            width: 100px;
+            height: 50px;
+            position: absolute;
+            background-color: yellow;
+            top:50%;
+            left:50%;
+            margin-top: -25px;
+            margin-left: -50px;
+            /* 另一种方式：
+            此段代码可以让该元素水平垂直居中
+            margin: auto;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            */
+        }
+        .con{
+            width: 40px;
+            height: 40px;
+            background-color: rgba(26, 126, 35, 0.333);
+            position: fixed;
+            top:20px;
+            left: 50%;
+            margin-left: -20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="con"></div>
+    <div class="aa">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+    </div>
+    <div class="bb"></div>
+    <div class="five">
+
+    </div>
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+  
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <p>啊是的那三款记得那时家里电脑按时到了那时大家阿斯顿了解暗示大家按时</p>
+
+    <div class="no1">
+        <div class="no2"></div>
+        <div class="no3"></div>
+    </div>
+</body>
+</html>

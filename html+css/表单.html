@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="GET">
+        first name:&nbsp;<input type="text" name="firstname"> <br>
+        last name:&nbsp;<input type="text" name="lastname"><br>
+        mima:<input type="password" name="pwd">
+        <label for="male">选项一</label>
+        <input type="radio" name="选项1"   id="male" value="456"> 
+        <label for="mala"> 选项二</label>
+        <input type="radio" name="选项1"  id="mala" value="4564">
+        <input type="checkbox" id="">
+        <input type="checkbox" id="">
+        <input type="checkbox" id="">
+        <input type="submit" value="sad">
+
+    </form> 
+    <form action="">
+        <fieldset style="width: 400px;">
+            <legend>个人信息</legend>
+
+
+            姓名：<input type="text"><br>
+            邮箱：<input type="text"><br>
+            地址：<input type="text" name="" id=""><br>
+            生日：<select name="" id="" disabled="true" >   
+                <!-- 当disabled值为true时，则禁用下拉菜单 -->
+                <option value="1949.3.5">1949.3.5</option>
+                <option value="1949.3.5">1949.3.5</option>
+                <option value="1949.3.5">1949.3.5</option>
+                <option value="1949.3.5">1949.3.5</option>
+                <option value="1949.3.5">1949.3.5</option>
+                <option value="1949.3.5">1949.3.5</option>
+                <option value="1995.3.2" selected="select" >1995.3.2</option>    
+                <!-- 当selected=select时，则此项为默认选中项 -->
+            </select>
+            
+        </fieldset>
+        <select onchange="self.location.href=options[selectedIndex].value" name="select"> 
+                <option selected>=== 合作伙伴 ===</option> 
+                <option value="http://www.baidu.com">百度</option> 
+                <option value="http://www.w3cschool.cn">w3cschool在线教程</option> 
+                <option value="http://www.w3cschool.cn">优聚</option> 
+                </select> 
+        <select name="pageselect" onchange="self.location.href=options[selectedIndex].value" > 
+                <option value="http://www.baidu.com">百度</option> 
+                <option value="http://www.w3cschool.cn">w3cschool在线教程</option> 
+                </select> 
+    </form>
+    
+</body>
+</html>

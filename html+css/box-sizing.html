@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .aa {
+            width: 500px;
+            height: 200px;
+            /* 使用box-sizing:border-box;解决*/
+            /* box-sizing: border-box; */
+            /* inherit：规定从父级继承box-sizing属性 */
+            box-sizing: inherit;
+            padding: 10px 50px;
+            background-color: aqua;
+            border: 4px solid red;
+        }
+        .bb{
+            width: 50px;
+            height: 50px;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <!-- CSS3中解决padding及边框撑大盒子的问题 -->
+    <div class="aa">
+        <div class="bb">
+        </div>
+    </div>
+</body>
+</html>

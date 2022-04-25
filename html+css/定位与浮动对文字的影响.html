@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 定位对文字的影响 */
+        .po-box {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background-color: pink;
+        }
+        .po-son{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+            top:0;
+            left: 0;
+            
+        }
+
+
+        /* 浮动对文字的影响 */
+        .po-small{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            float: left;
+            
+        }
+    </style>
+</head>
+<body>
+    <!-- 定位对文字的影响 -->
+    <div class="po-box">
+        <div class="po-son">
+
+        </div>
+        <p>暗示可能来到拉斯加快递那看来是的年纪卡死了DNA深刻理解你打开时了解到那看来是加拿大是考虑到那可是加拿大阿斯达四大</p>
+
+
+    </div>
+
+    <!-- 浮动对文字的影响 -->
+    <div class="po-box">
+    <div class="po-small">
+
+    </div>
+    <p>暗示可能来到拉斯加快递那看来是的年纪卡死了DNA深刻理解你打开时了解到那看来是加拿大是考虑到那可是加拿大阿斯达四大</p>
+
+
+</div>
+
+ <!-- 为什么文字不能被浮动的块盖住？  ---简单粗暴：因为float本意就是让文字环绕
+    第一，浮动的目的。最初时，浮动只能用于图像（某些浏览器还支持表的浮动），目的就是为了允许其他内容（如文本）“围绕”该图像。
+    而后来的CSS允许浮动任何元素。
+    第二，绝对定位与浮动的区别。
+
+    绝对定位是将元素彻底从文档流删除，并相对于其包含块定位（包含块可能是文档中的另一个元素或者是初始包含块），元素原先在
+    正常文档流中所占的空间会关闭，就好像该元素原来不存在一样，该元素再也不会影响其他元素的布局了。      
+    而浮动，会以某种方式将浮动元素从文档的正常流中删除，并把浮动元素向左边和右边浮动，不过它还是会影响布局，关于浮动的有
+    许多规则，读者可自行阅读《CSS权威指南》一书，介绍地很详细。采用CSS的特有方式，浮动元素几乎“自成一派”，不过它们还是对
+    文档的其余部分有影响。这种影响源自于这样一个事实：一个元素浮动时，其他内容会“环绕”该元素。  
+            -->
+</body>
+</html>

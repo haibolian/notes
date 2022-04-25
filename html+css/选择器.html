@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 为p标签中带有app类的元素添加样式
+        或者是为类为app的p标签添加样式 */
+        p.app {
+            color: aqua;
+        }
+        /* 为带有title属性的元素添加样式 */
+        [title]{
+            color: blueviolet;        
+        }
+        /* 为title属性的值为hello的元素添加样式 */
+        [title="hello"]{
+            color: red;
+        }
+        /* 为title属性中值有app的添加样式;app与其他值用空格隔开 */
+        [title~=app]{
+            color: pink;
+        }
+        /* 属性选择器在为不带有 class 或 id 的表单设置样式时特别有用： */
+        input[type="text"]{
+            background-color: yellow;
+        }
+        input[type="button"]{
+            width: 200px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <p class="app">你好呀</p>
+        <p>是的，你好呀</p>
+        <a title="hello" href="#">百度</a>
+        <a title="school hello" href="#">搜狐</a>
+        <abbr title="app asd">链接</abbr>
+        <abbr title="app asd">另一个链接</abbr>
+    </div>
+    <input type="text" name="" id="">
+    <input type="button" value="anniu">
+</body>
+</html>
