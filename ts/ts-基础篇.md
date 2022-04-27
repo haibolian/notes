@@ -1,3 +1,13 @@
+`typescript` 资源：
+
+[typescript 入门教程](https://ts.xcatliu.com/introduction/what-is-typescript.html)
+
+[深入理解 typescript](https://jkchao.github.io/typescript-book-chinese/#why)
+
+[TypeScript 中文手册](https://typescript.bootcss.com/)
+
+[更多扩展资源参考](https://tsejx.github.io/typescript-guidebook/wiki/extensions)
+
 # 1 原始数据类型
 
 
