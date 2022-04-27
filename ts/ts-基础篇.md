@@ -542,7 +542,7 @@ let tom: Person = {
 
 定义的对象的属性比接口多或者少都是不允许的。可以是用可选属性。
 
-### 8.2 可选属性
+## 8.2 可选属性
 
 ```ts
 interface Person {
@@ -556,7 +556,7 @@ let tom: Person = {
 
 这时仍然不允许添加接口未定义的属性。
 
-### 8.3 任意属性
+## 8.3 任意属性
 
 ```ts
 interface Person {
@@ -589,4 +589,183 @@ interface Person {
 
 
 # 9. 类
+
+## 9.1 public、private、protected
+
+- public 公有属性
+  - 可以在任何地方被访问到
+- private 私有属性
+  - 实例对象无法直接存取
+  - 子类不允许访问
+  - 修饰构造函数时，该类不允许被继承或实例化
+- protected 保护属性
+  - 允许子类访问
+  - 修饰构造函数时，该类只允许继承
+
+## 9.2 参数属性
+
+修饰符和 `readonly` 还可以使用在构造函数参数中，等同于类中定义该属性同时给该属性赋值，使代码更简洁。
+
+```ts
+class Animal {
+  // public name: string
+  public constructor(public name) {
+    // this.name = name;
+  }
+}
+```
+
+## 9.3 只读修饰符
+
+只读属性关键字，只允许出现在**属性声明**或**索引签名**或**构造函数**中。
+
+注意如果 `readonly` 和其他访问修饰符同时存在的话，需要写在其后面。
+
+```ts
+class Animal {
+  // public readonly name;
+  public constructor(public readonly name) {
+    // this.name = name;
+  }
+}
+```
+
+## 9.4 抽象类
+
+`abstract` 关键词
+
+抽象类中的抽象方法必须由子类实现
+
+```ts
+abstract class Animal {
+  public name;
+  public constructor(name) {
+    this.name = name;
+  }
+  public abstract sayHi();
+}
+class Cat extends Animal {
+  public sayHi() { // 如果这里不定义，会报错
+    console.log(`Meow, My name is ${this.name}`);
+  }
+}
+let cat = new Cat('Tom');
+```
+
+需要注意的是，即使是抽象方法，TypeScript 的编译结果中，仍然会存在这个类
+
+## 9.5  类的类型
+
+给类加上 TypeScript 的类型很简单，与接口类似：
+
+```ts
+class Animal {
+  name: string;
+  constructor(name: string) {
+    this.name = name;
+  }
+  sayHi(): string {
+    return `My name is ${this.name}`;
+  }
+}
+let a: Animal = new Animal('Jack');
+console.log(a.sayHi()); // My name is Jack
+
+```
+
+
+
+# 10. 类型别名
+
+类型别名用来给一个类型起个新名字。
+
+```ts
+type Name = string;
+type NameResolver = () => string;
+type NameOrResolver = Name | NameResolver;
+
+function getName(n: NameOrResolver): Name {
+  if (typeof n === 'string') {
+    return n;
+  } else {
+    return n();
+  }
+}
+```
+
+上例中，我们使用 `type` 创建类型别名。
+
+类型别名常用于联合类型。
+
+
+
+# 11. 声明合并
+
+如果定义了两个相同名字的函数、接口或类，那么它们会合并成一个类型。
+
+## 11.1 函数的合并
+
+可以使用重载定义多个函数类型。
+
+## 11.2 接口的合并
+
+接口中的属性在合并时会简单的合并到一个接口中
+
+注意，合并的属性的类型必须是唯一的
+
+```ts
+interface Alarm {
+  price: number;
+}
+interface Alarm {
+  weight: number;
+}
+```
+
+相当于：
+
+```ts
+interface Alarm {
+  price: number;
+  weight: number;
+}
+```
+
+```ts
+interface Alarm {
+  price: number;
+}
+interface Alarm {
+  price: string; // 类型不一致，会报错
+  weight: number;
+}
+```
+
+**接口中方法的合并，与函数的合并一样：**
+
+```ts
+interface Alarm {
+  price: number;
+  alert(s: string): string;
+}
+interface Alarm {
+  weight: number;
+  alert(s: string, n: number): string;
+}
+```
+
+相当于：
+
+```ts
+interface Alarm {
+  price: number;
+  weight: number;
+  alert(s: string): string;
+  alert(s: string, n: number): string;
+}
+```
+
+
+
+[参考文档](https://tsejx.github.io/typescript-guidebook/syntax/basics/basic-types)
 
