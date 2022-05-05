@@ -1,6 +1,6 @@
 # 1. 基本用法
 
-# 1.1 canvas 标签
+## 1.1 canvas 标签
 
 ```html
 <canvas id="cv" width="150" height="150"></canvas>
@@ -37,7 +37,7 @@ var ctx = canvas.getContext('2d');
 
 
 
-## 2. 绘制图形
+# 2. 绘制图形
 
 **栅格**的起点为左上角（坐标为（0,0））。所有元素的位置都相对于起点定位。
 
@@ -105,7 +105,7 @@ ctx.strokeRect(50, 50, 50, 50);
 4. `stroke()`：通过线条来绘制图形轮廓。
 5. `fill()`：通过填充路径的内容区域生成实心的图形。
 
-> **注意：当你调用fill()函数时，所有没有闭合的形状都会自动闭合，所以你不需要调用closePath()函数。但是调用stroke()时不会自动闭合****。
+> **注意：当你调用fill()函数时，所有没有闭合的形状都会自动闭合，所以你不需要调用closePath()函数。但是调用stroke()时不会自动闭合**。
 
 
 
@@ -143,7 +143,7 @@ ctx.stroke()
 
 
 
-### 2.4 圆弧
+## 2.4 圆弧
 
 `arc(x, y, radius, startAngle, endAngle, anticlockwise)`
 
