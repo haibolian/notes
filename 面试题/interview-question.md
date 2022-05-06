@@ -1470,7 +1470,7 @@ proxy 的目标对象中的 this 指向的是 proxy 实例，并非目标对象�
 | beforeDestory | 组件销毁前调用                                               |
 | destoryed     | 组件销毁后调用                                               |
 
-![](/Users/haibo/前端/myproject/my-note/面试题/images/ life-cycle.png)
+![组件生命周期图示](https://gitee.com/haibolian/screenshot/raw/master/images/20220505134324.png)
 
 ## 2. 父子生命周期顺序
 ​	父 `beforeCreate` -> 父 `created` -> 父 `beforeMount` -> 子 `beforeCreate` -> 子 `created` -> 子 `beforeMount` -> 子 `mounted` -> 父 `mounted`
@@ -1515,8 +1515,6 @@ v-show 只是利用 css 的 display 来显示或隐藏元素
 
 
 
-
-
 ## 8. 讲讲 vue 响应式原理
 
 1. 定义一个响应式方法，参数为 data，循环 data 中的数据，通过 `Object.defineProperty` 为 data 中每个属性添加 get 和 set 方法。
@@ -1547,7 +1545,9 @@ v-show 只是利用 css 的 display 来显示或隐藏元素
 > Object.defineProperty(obj, prop, descriptor)
 > ```
 
-[手写响应式代码](./vue 响应式.html)
+[手写响应式代码](https://github.com/haibolian/code-grocery/blob/main/vue%20%E5%93%8D%E5%BA%94%E5%BC%8F.js)
+
+
 
 ## 9. 讲讲虚拟 dom
 
@@ -1712,7 +1712,17 @@ key 是 Vue 中 vnode 的唯一标记，通过这个 key，我们的 diff 操作
 
 ## 20. SPA首屏加载速度慢的怎么解决
 
+1. Vue-Router路由懒加载（利用Webpack的代码切割）
+2. 使用CDN加速，将通用的库从vendor进行抽离
+3. Nginx的gzip压缩
+4. Vue异步组件
+5. 服务端渲染SSR
+6. 如果使用了一些UI库，采用按需加载
+7. 图片懒加载减少占用网络带宽
+8. 页面使用骨架屏
+9. 利用好script标签的async和defer这两个属性。功能独立且不要求马上执行的js文件，可以加入async属性。如果是优先级低且没有依赖的js，可以加入defer属性。
 
+可利用`performance.timing`看各个步骤的耗时：白屏时间：`performance.timing.responseStart \- performance.timing.navigationStart`
 
 ## 21. 
 
@@ -1821,10 +1831,12 @@ key 是 Vue 中 vnode 的唯一标记，通过这个 key，我们的 diff 操作
   资源标识如下：
 
   * **Last-Modify/If-Modify-Since：**服务器返回的header中会加上Last-Modify，Last-modify是一个时间标识该资源的最后修改时间；当浏览器再次请求该资源时，request的请求头中会包含If-Modify-Since，该值为缓存之前返回的Last-Modify。
+  
   * **Etag：**web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。
+  
   * **If-None-Match：**当资源过期时（使用Cache-Control标识的max-age），发现资源具有Etage声明，则再次向web服务器请求时带上头If-None-Match （Etag的值）。web服务器收到请求后发现有头If-None-Match 则与被请求资源的相应校验串进行比对，决定是否命中协商缓存；
-
-
+  
+    
 
 # 浏览器
 
@@ -1832,23 +1844,72 @@ key 是 Vue 中 vnode 的唯一标记，通过这个 key，我们的 diff 操作
 
 * css
 
-  1. 
+  1. 使用精灵图，将多个图标或图片放到一个图片中，通过 `background` 来显示相应的图片
+  1. 移除空的 css 规则
+  1. 充分利用 css 的继承属性，减少代码量
+  1. 提取公共样式，减少代码量
 
 * js
 
-  
+  1. 节流、防抖
+  1. [图片懒加载](https://www.jb51.net/article/220662.htm)
+  1. 如果需要添加很多 dom，先把节点通过 createElement 创建出来最后一次性加入 dom
+  1. 批量绑定事件时，使用事件委托，利用事件冒泡使父节点实现。
+  1. 当使用对象的多个或重复的某个属性时，使用ES6 的解构赋值，减少对对象的访问，尤其是 vue2 中的 this
 
 * 网络
 
-* webpack
+  尽可能减少 http 请求次数
 
 ## 2. 浏览器内核
 
+浏览器内核主要分成两部分，渲染引擎和 js 引擎。
 
+**渲染引擎**负责获取页面的内容，计算网页的显示方式，输出给显示器。浏览器内核的不同对于网页的语法和解释会有所不同，所以渲染效果也可能不同。
+
+**js 引擎**则解析和执行 js 来实现网页的动态效果。
+
+**常见的浏览器内核有**
+
+IE：trident
+
+Chrome：以前是 webkit，现在是Blink
+
+火狐：Gecko
+
+safari：webkit
+
+opera：从 webkit 到 blink 
 
 ## 3. 从输入网址回车到页面显示过程
 
+1. 通过 DNS 解析域名的实际 IP
 
+2. 检查浏览器是否有强缓存，有则取本地的 html
+
+3. 没有的强缓存，则与 web 服务器建立 tcp 链接，服务器通过请求参数检查是否协商缓存。有的话返回状态码 304，没有的话返回请求资源
+
+4. TCP 协议通过三次握手建立链接
+
+   1. 客户端发送 syn(j) 报文段请求链接，确定服务端是否开始端口准备链接。客户端状态为 SYN_SEND
+   2. 服务器如果开启端口并准备接受链接，则会向客户端返回 SYN(k) + ACK(j+1) 报文段给客户端，服务端状态为 SYN_RECV
+   3. 客户端收到 SYN + ACK 包，向服务端发送确认包 ACK(k+1)，这个包发送完毕，客户端和服务端进入ESTABLISHED状态，完成三次握手，客户端和服务端开始传输数据。
+
+5. 建立链接后，浏览器请求页面资源
+
+6. 服务器发送资源
+
+7. 浏览器获取到资源后，解析HTML，如果解析到`style`标签则开始解析css，如果解析到link标签则先异步下载，完成后解析css。
+
+   如果遇到`script`标签，判断是行内写法则直接解析执行，如果是src引入则`同步下载`脚本文件，下载完成`立即执行`，注意这里下载过程是`阻塞`的，其他流程都会等下载完成后执行。
+
+8. 然后开始渲染页面，解析 HTML, 构建 DOM 树，然后解析 css，生成 css 规则树
+
+   合并 DOM 树和 css 规则树，生成渲染树render
+
+   浏览器开始布局 render树，根据各节点的大小，位置进行计算，得到每个节点的几何信息
+
+   最后浏览器将各个节点的信息发送给GPU，GPU 绘制页面展示到显示器上。
 
 ## 4. cookies、sessionStorage、localStorage 和 indexDB 的区别
 
@@ -1875,7 +1936,7 @@ cookie是以文本的方式保存在客户端，每次请求时都带上它。 �
 3. 然后合并DOM树和CSS规则树，生成一个渲染树，也就是render树
 4. 开始布局render树，根据render树来对各个元素的大小，位置进行计算，得到每个节点的几何信息。它是根据浏览器视口的大小来计算元素的位置和大小。重排会走到这一步。
 5. 开始绘制 render 树，绘制页面的像素信息，根据渲染树节点的几何信息，得到每个节点的像素数，重绘会走到这一步。
-6. 最后浏览器将各个层次的节点信息发送给GPU，GPU绘制展示到页面上
+6. 最后浏览器将各个层次的节点信息发送给GPU，GPU绘制展示到页面上。
 
 [参考资料1](https://juejin.cn/post/7075515261121626119)
 
@@ -1895,9 +1956,30 @@ cookie是以文本的方式保存在客户端，每次请求时都带上它。 �
 
 
 
+## 7. 哪些情况会导致重绘和重排，如何减少
 
+**以下几个动作可能会导致性能问题**：
 
+- 改变 `window` 大小
+- 改变字体
+- 添加或删除样式
+- 文字改变
+- 定位或者浮动
+- 盒模型
 
+**如何减少重绘和重排**：
+
+1. 使用 `transform` 替代 `top`
+2. 使用 `visibility` 替换`display: none` ，因为前者只会引起重绘，后者会引发回流（改变了布局）
+3. 不要使用 `table` 布局，可能很小的一个小改动会造成整个 `table` 的重新布局
+4. 动画实现的速度的选择，动画速度越快，回流次数越多
+5. 将频繁重绘或者回流的节点设置为图层，图层能够阻止该节点的渲染行为影响别的节点。比如对于 `video` 标签来说，浏览器会自动将该节点变为图层。
+6. 避免使用`css`表达式(`expression`)，因为每次调用都会重新计算值（包括加载页面）
+7. 批量修改元素样式：`elem.className` 和 `elem.style.cssText` 代替 `elem.style.xxx`
+8. 需要要对元素进行复杂的操作时，可以先隐藏(`display:"none"`)，操作完成后再显示
+9. 需要创建多个`DOM`节点时，使用`DocumentFragment`创建完后一次性的加入`document`
+
+[参考文章](https://mp.weixin.qq.com/s/gJQ81EVxjzm10yX_fxAp8w)
 
 # webpack
 
