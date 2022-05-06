@@ -360,4 +360,105 @@ march();
 
 ## 3.5 渐变
 
-[todo](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors#gradients)
+**线性渐变**：
+
+**`createLinearGradient(x1, y1, x2, y2)`**：接受4 个参数，表示渐变的起点 (x1,y1) 与终点 (x2,y2)。
+
+该创建出一个 `canvasGradient` 对象，那么接下来就需要给它定义渐变的样式了：
+
+**`addColorStop(position, color)`**：接受 2 个参数，`position` 参数必须是一个 0.0 与 1.0 之间的数值，表示渐变中颜色所在的相对位置。`color` 参数必须是一个有效的 CSS 颜色值。
+
+使用方法：
+
+```js
+const lingrad = ctx.createLinearGradient(0,0,0,150);
+lingrad.addColorStop(0, 'red');
+lingrad.addColorStop(1, '#fff');
+ctx.fillStyle = lingrad;
+ctx.fillRect(10,10,130,130);
+```
+
+![image-20220506223744773](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506223744773.png)
+
+综合使用：
+
+```js
+const lingrad = ctx.createLinearGradient(0,0,0,150);
+lingrad.addColorStop(0, 'red');
+lingrad.addColorStop(0.5, '#fff');
+lingrad.addColorStop(0.5, 'green');
+lingrad.addColorStop(1, '#fff');
+
+const lingrad2 = ctx.createLinearGradient(0,50,0,95);
+lingrad2.addColorStop(0, 'yellow');
+lingrad2.addColorStop(1, 'rgba(0,0,0)');
+
+ctx.fillStyle = lingrad;
+ctx.strokeStyle = lingrad2;
+
+ctx.fillRect(10,10,130,130);
+ctx.strokeRect(50,50,50,50);
+```
+
+![image-20220506224225220](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506224225220.png)
+
+
+
+**径向渐变：**
+
+**`createRadialGradient(x1, y1, r1, x2, y2, r2)`**：6 个参数，前三个定义开始圆形的坐标及半径，后三个定义结束的圆形的坐标及半径。
+
+从开始圆向结束圆进行渐变，假设开始圆和结束圆有相同坐标的圆心
+
+如果开始圆的半径大于结束圆，那么 开始圆就往圆的内部*包围*到结束圆
+
+如果开始圆的半径小于结束圆，那么 开始圆就往外*扩散*到结束圆
+
+例如：
+
+```js
+// 开始圆半径 > 结束圆半径
+const radia = ctx.createRadialGradient(100, 100, 50, 100, 100, 15);
+radia.addColorStop(0, 'green')
+radia.addColorStop(1, '#000')
+
+ctx.fillStyle = radia
+ctx.fillRect(0, 0, 500, 500)
+```
+
+![image-20220506231332795](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506231332795.png)
+
+```js
+// 开始圆半径 < 结束圆半径
+const radia = ctx.createRadialGradient(100, 100, 10, 100, 100, 60);
+radia.addColorStop(0, 'green')
+radia.addColorStop(1, '#000')
+
+ctx.fillStyle = radia
+ctx.fillRect(0, 0, 500, 500)
+```
+
+![image-20220506233825910](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506233825910.png)
+
+背景色会被变成最外面的那个颜色。
+
+一般情况下开始圆小于结束圆，就是一个渐变从内向外*扩散*。通过设置 `addColorStop(1, color)` 开设置图形背景色。
+
+```js
+const radia = ctx.createRadialGradient(78, 87, 5, 100, 100, 60);
+radia.addColorStop(0, '#ccc')
+radia.addColorStop(0.9, 'green')
+radia.addColorStop(1, '#fff')
+
+ctx.fillStyle = radia
+ctx.fillRect(0, 0, 500, 500)
+```
+
+![image-20220506234443332](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506234443332.png)
+
+
+
+## 3.6 图案样式
+
+[todo](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors#patterns)
+
