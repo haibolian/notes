@@ -378,7 +378,7 @@ ctx.fillStyle = lingrad;
 ctx.fillRect(10,10,130,130);
 ```
 
-![image-20220506223744773](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506223744773.png)
+![image-20220506223744773](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506223744773.png)	
 
 综合使用：
 
@@ -400,7 +400,7 @@ ctx.fillRect(10,10,130,130);
 ctx.strokeRect(50,50,50,50);
 ```
 
-![image-20220506224225220](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506224225220.png)
+![image-20220506224225220](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506224225220.png)	
 
 
 
@@ -426,7 +426,7 @@ ctx.fillStyle = radia
 ctx.fillRect(0, 0, 500, 500)
 ```
 
-![image-20220506231332795](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506231332795.png)
+![image-20220506231332795](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506231332795.png)	
 
 ```js
 // 开始圆半径 < 结束圆半径
@@ -438,7 +438,7 @@ ctx.fillStyle = radia
 ctx.fillRect(0, 0, 500, 500)
 ```
 
-![image-20220506233825910](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506233825910.png)
+![image-20220506233825910](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506233825910.png)	
 
 背景色会被变成最外面的那个颜色。
 
@@ -454,11 +454,82 @@ ctx.fillStyle = radia
 ctx.fillRect(0, 0, 500, 500)
 ```
 
-![image-20220506234443332](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506234443332.png)
+![image-20220506234443332](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220506234443332.png) 
 
 
 
 ## 3.6 图案样式
 
-[todo](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API/Tutorial/Applying_styles_and_colors#patterns)
+**重复图像源**
 
+`createPattern(image, type)`
+
+* image 是一个 Image 对象的引用或者另一个 canvas 对象
+* type：指定如何重复图像，`repeat`，`repeat-x`，`repeat-y` 和 `no-repeat`。
+
+**重复图片**
+
+```js
+var img = new Image();
+img.src = 'https://mdn.mozillademos.org/files/222/Canvas_createpattern.png';
+img.onload = function() {
+  // 创建图案
+  var ptrn = ctx.createPattern(img, 'repeat');
+  ctx.fillStyle = ptrn;
+  ctx.fillRect(0, 0, 150, 150);
+}
+```
+
+![image-20220512131937388](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220512131937388.png)	
+
+**重复 Canvas**
+
+```html
+<canvas id="cv2" width="50" height="50"></canvas>
+<canvas id="cv" width="500" height="500"></canvas>
+```
+
+```js
+const cv2 = document.getElementById('cv2')
+var ctx2 = cv2.getContext('2d')
+
+ctx2.arc(25, 25, 25, 0, 2 * Math.PI)
+ctx2.fillStyle = '#000'
+ctx2.fill()
+
+const canvas = document.getElementById('cv')
+var ctx = canvas.getContext('2d');
+const img = ctx.createPattern(cv2, 'repeat')
+ctx.fillStyle = img
+ctx.fillRect(0, 0, 400, 100)
+```
+
+![image-20220512132144867](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220512132144867.png)	
+
+![image-20220512132116151](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220512132116151.png)	
+
+## 3.7 阴影
+
+* `shadowOffsetX、shadowOffsetY` `shadowOffsetX` 和 `shadowOffsetY `用来设定阴影在 X 和 Y 轴的延伸距离，负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 `0`。 
+
+* `shadowBlur` 阴影的模糊程度
+* `shadowColor` 阴影的颜色
+
+拿上面的圆举例
+
+```js
+ctx2.shadowOffsetX = 2
+ctx2.shadowOffsetY = 2
+ctx2.shadowBlur = 2
+ctx2.shadowColor = 'red'
+ctx2.arc(25, 25, 25, 0, 2 * Math.PI)
+ctx2.stroke()
+```
+
+![image-20220512133323450](https://gitee.com/haibolian/screenshot/raw/master/images/image-20220512133323450.png)	
+
+
+
+## 3.8 canvas 填充规则
+
+[文档描述较少，网上看看别人的讲解吧，这个挺有意思的](https://segmentfault.com/a/1190000041646407?utm_source=sf-similar-article)
