@@ -483,7 +483,7 @@ console.log(3)
 ```javascript
 function debounce(fn, time){
   let timer = null
-  return function (){
+  return function (){ 
     timer && clearTimeout(timer)
     !timer && fn.call(this, ...arguments)
     timer = setTimeout(() => {
@@ -543,8 +543,17 @@ function throttle(fn, time) {
 
 * 时间戳版
 
-```
-
+```js
+function throttle(fn, time){
+  let prev = 0
+  return function(){
+    let now = Date.now()
+    if ( now - prev > time) {
+      fn()
+      prev = now
+    }      
+  }
+}
 ```
 
 
