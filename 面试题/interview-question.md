@@ -597,8 +597,6 @@ function clonedeep(target, hash = new WeakMap()){
       [] : Object.create(Object.getPrototypeOf(target),allDescp)
     hash.set(target,cloneTarget)
     for (const key of Reflect.ownKeys(target)) {
-      // target[key] === target ?  // 对于对象循环，也可通过做判断来解决
-      // cloneTarget[key] = cloneTarget :
       cloneTarget[key] = clonedeep(target[key],hash )
     } 
     return cloneTarget
