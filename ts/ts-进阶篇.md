@@ -222,7 +222,44 @@ if (isNumber(foo)) {
 
 # 6. 交叉类型
 
+```ts
+type A = { a: string }
+
+type B = { b: number }
+
+type C = A & B
+
+const obj1:A = { a: 'str' }
+
+const obj2:B = { b: 12 }
+
+const obj3:C = { a: '2', b: 1 }
+
+```
+
+
+
 # 7. 联合类型
+
+```ts
+type A = string | number
+
+const a: A = 'name'
+
+const b: A = 122
+```
+
+```ts
+function generate(p: string[] | string){
+  if(typeof p === 'string' ) {
+    p.split('')
+  }else {
+    p.forEach(item => item)
+  }
+}
+```
+
+
 
 # 8. 索引类型
 
@@ -232,9 +269,97 @@ if (isNumber(foo)) {
 
 # 11. This 类型
 
-# 12. 字符串字面量类型
+# 12. 字面量类型
+
+```ts
+type A = 'hello'
+
+let a: A = 'hi' // error: Type '"hi"' is not assignable to type '"hello"'
+
+let b: A = 'hello'  // true
+```
+
+它们本身并不是很实用，但是可以在一个联合类型中组合创建一个强大的（实用的）抽象：
+
+```ts
+type OneToFive = 1 | 2 | 3 | 4 | 5;
+type Bools = true | false;
+```
+
+```ts
+type Direction = 'north' | 'east' | 'south' | 'west'
+
+function getDirection(d: Direction): string{
+  return d
+}
+getDirection('east') // true
+getDirection('East') // false Argument of type '"East"' is not assignable to parameter of type 'Direction'
+```
+
+**请看此例：**
+
+```ts
+function fn(foo: 'foo'){
+  return foo
+}
+
+const test = {
+  a: 'foo'
+}
+
+fn(test.a) // error: Argument of type 'string' is not assignable to parameter of type '"foo"'.
+```
+
+这是由于 `someProp` 被推断为 `string`，我们可以采用一个简单的类型断言来告诉 ts：
+
+```ts
+function fn(foo: 'foo'){
+  return foo
+}
+
+const test = {
+  a: 'foo'
+}
+
+fn(test.a as 'foo') // error: Argument of type 'string' is not assignable to parameter of type '"foo"'.
+```
 
 # 13. 可辨识联合
+
+```ts
+interface Circle {
+  kind: 'circle'
+  radius: number
+}
+
+interface Rect {
+  kind: 'rect'
+  width: number,
+  height: number
+}
+
+interface Square {
+  kind: 'square'
+  size: number
+}
+
+type Shape = Circle | Rect | Square
+
+function getArea(s: Shape): number{
+  if(s.kind == 'circle') {
+    return s.radius ** 2 * Math.PI
+  } else if(s.kind == 'rect') {
+    return s.height * s.width
+  } else if(s.kind == 'square') {
+    return s.size * s.size
+  }else{
+    const e: never = s
+    return e
+  }
+}
+```
+
+
 
 # 14. 命名空间和模块 
 
