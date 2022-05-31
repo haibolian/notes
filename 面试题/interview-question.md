@@ -291,7 +291,7 @@ flex 布局是弹性布局。任何元素都可以使用 flex 布局，包括行
 
 ## 7. 元素水平垂直居中的方法有哪些？如果元素不定宽高呢？
 
-
+[居中布局方式汇总](https://github.com/haibolian/code-grocery/blob/main/%E5%B1%85%E4%B8%AD%E5%B8%83%E5%B1%80.html)
 
 # JavaScript
 
@@ -311,7 +311,7 @@ flex 布局是弹性布局。任何元素都可以使用 flex 布局，包括行
 
 2. 箭头函数没有 `arguments`
 
-3. `this` 箭头函数的 this 指向全局对象；普通函数中，this 的值取决于函数如何被调用的。
+3. `this` 箭头函数的 this 是箭头函数所处环境的 this；普通函数中，this 的值取决于函数如何被调用的。
 
 4. call、apply、bind 方法都改变不了箭头函数的指向， 第一个参数会被忽略
 
@@ -1806,7 +1806,9 @@ key 是 Vue 中 vnode 的唯一标记，通过这个 key，我们的 diff 操作
 
      1. 预检请求：在 CORS 发送正式请求之前，会先对服务器发送一个 method 为 OPTIONS 的预检请求，先询问服务器，该网页所属的域名是否在服务器允许的范围中，以及可以使用哪些 HTTP 动词和头信息字段。只有得到正确的答复，浏览器才会发送正式的请求。
 
-        预检请求的头部信息包含两个特殊的字段：
+        预检请求的头部信息还包含三个特殊的字段：
+
+        **`Origin`** 必选 ，表示请求来自哪个源。
 
         **`Access-Control-Request-Method `**：必选，用来列出浏览器的 CORS 请求会用到哪些 http 方法。
 
@@ -1821,7 +1823,7 @@ key 是 Vue 中 vnode 的唯一标记，通过这个 key，我们的 diff 操作
         `Access-Control-Allow-Credentials`
 
         `Access-Control-Max-Age`：表示此次预检请求的有效期，在此有效期间，不用发送另一条预检请求。
-
+     
      [参考链接](https://www.ruanyifeng.com/blog/2016/04/cors.html)
 
 ## 2. 强缓存和协商缓存
