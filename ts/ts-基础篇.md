@@ -4,7 +4,7 @@
 
 [深入理解 typescript](https://jkchao.github.io/typescript-book-chinese/#why)
 
-[TypeScript 中文手册](https://typescript.bootcss.com/)
+[TypeScript 中文手册](https://www.tslang.cn/docs/home.html)
 
 [更多扩展资源参考](https://tsejx.github.io/typescript-guidebook/wiki/extensions)
 
