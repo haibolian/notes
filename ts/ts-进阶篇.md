@@ -261,9 +261,81 @@ function generate(p: string[] | string){
 
 
 
-# 8. 索引类型
+# 8. 索引类型 - keyof
+
+```ts
+function pluck<T, K extends keyof T>(o: T, names: K[]): T[K][] {
+  return names.map(name => o[name])
+}
+
+interface Person {
+  name: string
+  age: number
+  sex: boolean
+}
+
+const p1: Person = {
+  name: 'lison',
+  age: 12,
+  sex: true
+}
+
+console.log(pluck(p1, ['name', 'age']));
+```
+
+
 
 # 9. 映射类型
+
+`Readonly` `Partial` `Pick` `Record`
+
+```ts
+interface Person {
+  name: string
+  age: number
+  sex: boolean
+}
+
+type ReadonlyType<T> = {
+  readonly [K in keyof T]: T[K]
+}
+
+type ReadonlyPerson = ReadonlyType<Person> 
+/**
+type ReadonlyPerson = {
+    readonly name: string;
+    readonly age: number;
+    readonly sex: boolean;
+}
+**/
+```
+
+```ts
+interface Person {
+  name: string
+  age: number
+  sex: boolean
+}
+
+type ReadonlyType<T> = {
+  readonly [K in keyof T]: T[K]
+}
+
+type PartialType<T> = {
+  [K in keyof T]?: T[K]
+}
+
+type PartialPerson = PartialType<Person>
+/**
+	type PartialPerson = {
+    name?: string | undefined;
+    age?: number | undefined;
+    sex?: boolean | undefined;
+}
+**/
+```
+
+
 
 # 10. 条件类型
 
