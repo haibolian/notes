@@ -242,6 +242,23 @@ const obj3:C = { a: '2', b: 1 }
 # 7. 联合类型
 
 ```ts
+interface A {
+  name: string
+}
+
+interface B {
+  age: number
+}
+
+type C = A | B
+
+const c: C = {
+  name: '',
+  age: 0
+}
+```
+
+```ts
 type A = string | number
 
 const a: A = 'name'
@@ -262,6 +279,10 @@ function generate(p: string[] | string){
 
 
 # 8. 索引类型 - keyof
+
+```ts
+type TestType = keyof any // type TestType = string | number | symbol
+```
 
 ```ts
 function pluck<T, K extends keyof T>(o: T, names: K[]): T[K][] {
@@ -332,6 +353,40 @@ type PartialPerson = PartialType<Person>
     age?: number | undefined;
     sex?: boolean | undefined;
 }
+**/
+```
+
+```ts
+interface Person {
+  name: string
+  age: number
+  sex: boolean
+  address: string,
+}
+
+type PickType<T, K extends keyof T> = {
+  [P in K]: T[P]
+}
+
+type Tuple = 'name' | 'age'
+
+type PlainPerson = PickType<Person, Tuple>
+/**
+  type PlainPerson = {
+      name: string;
+      age: number;
+  }
+**/
+```
+
+```ts
+type TestRecord = Record<'prop1' | 'prop2' | 'prop3', string>
+/**
+	type TestRecord = {
+    prop1: string;
+    prop2: string;
+    prop3: string;
+	}
 **/
 ```
 
