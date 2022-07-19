@@ -41,3 +41,47 @@ const useNamespace = (block: string) => {
 ```
 
 还有 `be`、`bm`、`em`、 `is` 之类的
+
+
+
+## 2. useProp
+
+```ts
+export const useProp = <T>(name: string): ComputedRef<T | undefined> => {
+  const vm = getCurrentInstance()!
+  return computed(() => (vm.proxy?.$props as any)[name] ?? undefined)
+}
+```
+
+通过 `getCurrentInstance` 可以拿到当前实例的 $props，也就可以在非 vue 文件中获取到该实例的 prop。
+
+
+
+## 3. useDisabled
+
+```ts
+const disabled = useDisabled(computed(() => radioGroup?.disabled))
+```
+
+```ts
+export const useDisabled = (fallback?: MaybeRef<boolean | undefined>) => {
+  const disabled = useProp<boolean>('disabled')
+  const form = inject(formContextKey, undefined)
+  return computed(
+    () => disabled.value || unref(fallback) || form?.disabled || false
+  )
+}
+```
+
+大多数表单控件的 disabled、size 等属性都有很多因素影响，如 form、group、和自己。在 useDisabled 中拿到自己的 disabled 和表单的 disabled，group 的disabled 属性不好统一管理，通过 fallback 将其 disabled 属性ref 值传过来，三者进行判断，最终返回合适的 disabled。
+
+useSize 也是类似。
+
+这样做可以统一管理，不需要每个表单控件重复的判断了。
+
+
+
+
+
+
+
